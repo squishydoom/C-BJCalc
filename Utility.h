@@ -1,5 +1,4 @@
-#ifndef H_UTILITY
-#define H_UTILITY
+#pragma once
 
 #include <list>
 #include <utility>
@@ -31,10 +30,8 @@ const std::list<int> factors[22] = {
 };
 
 //Useful math functions.
-int hashChoose(int, int);		//Generates the index of the array where Choose data be stored.
-std::pair<int, int> unhashChoose(int); //Gets the n and k that generated the input index.
-std::list<int> factorialFactors(int); 		//List of prime factors in the product n!.
+int hashChoose(int, int);				//Generates the index of an array to store combinatorial data or "triangular" data. (1,1) -> 0, (2,1) -> 1,  (2,2) -> 2, (3,1) -> 3, (3,2) -> 4, (3,3) -> 5, (4,1) -> 6, (4,2) -> 7, (4,3) -> 8, (4,4) -> 9, etc. 
+std::pair<int, int> unhashChoose(int);	//Gets the n and k that generated the input index.
+std::list<int> factorialFactors(int); 	//List of prime factors in the product n!.
 int product(std::list<int>);			//Multiplies out a list of integers.
 int combinatorial(std::vector<int>);	//Calculates factorial ratios of the form n! / (i!j!...k!) when input is <n,i,j,...,k>. Defined for when i+j+...+k <= n.
-
-#endif

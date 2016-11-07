@@ -1,8 +1,9 @@
 #include "Utility.h"
 
 int hashChoose(int n, int k){
-	return (k - 1) + ((n-1)*n)/2;
+	return ((n-1)*n)/2 + (k - 1);
 }
+
 
 std::pair<int,int> unhashChoose(int index){
 	int threshhold = 0;
@@ -18,26 +19,26 @@ std::pair<int,int> unhashChoose(int index){
 	
 }
 
+
 std::list<int> factorialFactors(int n){
 	std::list<int> returnThis;
 	for(int i = 1; i <= n; i++){
-		std::list<int> copy = factors[i];
-		returnThis.merge(copy);
+		returnThis.merge(factors[i]);
 	}
 	return returnThis;
 }
 
 
-int product(std::list<int> listOfInts){
+int product(std::list<int> ints){
 	int p = 1;
-	for(auto it = listOfInts.begin(); it != listOfInts.end(); ++it){
+	for(auto it = ints.begin(); it != ints.end(); ++it){
 		p *= *it;
 	}
 	return p;
 }
 
 
-int combinatorial(std::vector<int> args){//Computes n choose k, and generalizations as long as the 
+int combinatorial(std::vector<int> args){
 	std::list<int> numerator = factorialFactors(args[0]);
 	std::list<int> denominator;
 	for(int i = 1; i < args.size(); i++){

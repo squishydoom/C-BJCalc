@@ -5,7 +5,7 @@ class Blackjack{
   public:
 	Node gamestate[32];
 	
-	Blackjack();
+	Blackjack(void);
 	
 	//print functions
 	void printTableHeader(int);

@@ -1,5 +1,4 @@
-#ifndef H_NODE
-#define H_NODE
+#pragma once
 
 #include "BaseTypes.h"
 #include <string>
@@ -35,7 +34,7 @@ class Node{
 	int value;									//The blackjack value of the node (0, 2-21, or 0 for busted).
 	int position;								//The index of the Node in the array it will be placed in.
 	
-	Node();
+	Node(void);
 	
 	void connect(int, Node*);					//Creates both the forward pointer for the current node to a target node, and the backward pointer in the target node to the current node.
 	void disconnect(int);						//Undoes the previous function.
@@ -46,5 +45,3 @@ class Node{
 	void printPosition(std::string);
 	void printHardness(std::string, bool);
 };
-
-#endif

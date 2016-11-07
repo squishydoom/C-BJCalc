@@ -1,5 +1,4 @@
-#ifndef H_BASETYPES
-#define H_BASETYPES
+#pragma once
 
 #include <list>
 
@@ -19,5 +18,3 @@ enum class cardValue{
 
 typedef std::list<cardValue> cardSequence;
 typedef std::list<cardSequence> cardSequenceList;
-
-#endif

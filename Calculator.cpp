@@ -18,33 +18,46 @@ int main(){
 		}
 	}
 	
-	Choice choice = displayMenu();
+	std::pair<playerChoice, menuChoice> choices = displayMenu();
 	
-	switch(choice){
-		case Choice::ENUMERATE:
-			enumerate(dealer);
+	Blackjack which;
+	
+	switch(choices.first){
+		case playerChoice::DEALER:
+			which = dealer;
+		case playerChoice::PLAYER:
+			which = player;
+	}
+	
+	switch(choices.second){
+		case menuChoice::ENUMERATE:
+			enumerate(which);
 			break;
-		case Choice::FORWARDTABLE:
-			displayForwardTable(dealer);
+		case menuChoice::FORWARDTABLE:
+			displayForwardTable(which);
 			break;
-		case Choice::BACKWARDTABLE:
-			displayBackwardTable(dealer);
+		case menuChoice::BACKWARDTABLE:
+			displayBackwardTable(which);
 			break;
 	}
 	
 	return 0;
 }
 
-
-Choice displayMenu(void){
+std::pair<playerChoice, menuChoice> displayMenu(void){
+	playerChoice choice1 = static_cast<playerChoice>(stoi(promptInput("Dealer or Player? (1 for dealer, 2 for player): ")));
+	
+	std::cout << "\n";
 	std::cout << "What would you like to do?\n";
 	std::cout << "1: Enumerate Paths to...\n";
 	std::cout << "2: Display Forward Connections.\n";
 	std::cout << "3: Display Backward Connections.\n";
 	
-	Choice choice = static_cast<Choice>(stoi(promptInput("")));
+	menuChoice choice2 = static_cast<menuChoice>(stoi(promptInput("")));
 	
-	return choice;
+	std::pair<playerChoice, menuChoice> choices(choice1, choice2);
+	
+	return choices;
 }
 
 
